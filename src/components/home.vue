@@ -44,7 +44,7 @@ body {
   letter-spacing: 0px;
   text-transform: uppercase;
   opacity: 1;
-  color: #098df8;
+  color: #1487e6;
   margin-left: 10px;
 }
 .addressBook-book {

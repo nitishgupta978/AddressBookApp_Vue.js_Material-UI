@@ -7,7 +7,7 @@
     <v-card-title class="text-h6 font-weight-regular justify-space-between">
       <span>{{ currentTitle }}</span>
       <v-avatar
-        color="primary lighten-2"
+        color="primary"
         class="subheading white--text"
         size="24"
         v-text="step"
@@ -83,7 +83,7 @@
       :disabled="step === 1 || step === 2 "
       color="primary"
       depressed
-      @click="getEmployee">Register</v-btn> 
+      @click="getUserData">Register</v-btn> 
     </v-card-actions>
     <v-divider></v-divider>
      <v-dialog
@@ -180,7 +180,7 @@ export default {
     },
   },
    methods: {
-    getEmployee() {
+    getUserData() {
       loginService.addContact(this.formData).then((response) => {
         console.log(response.data.data);
         this.Contacts = response.data.data;

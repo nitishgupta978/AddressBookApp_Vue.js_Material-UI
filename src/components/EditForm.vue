@@ -1,7 +1,7 @@
 <template>
   <v-row justify="center">
     <v-col cols="12" sm="10" md="8" lg="6" width="100" >
-      <v-app-bar  color="orange lighten-1" dark>
+      <v-app-bar  color="primary" dark>
         
         <h2 style="margin-left: 223px">Address Book Form</h2>
         <v-icon style="margin-left: 249px">mdi-close</v-icon>

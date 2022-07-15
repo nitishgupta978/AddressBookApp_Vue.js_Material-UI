@@ -1,25 +1,8 @@
-<!-- <template>
-<v-app>
- <router-view/>
- </v-app>
-</template>
-
-<script>
-
-export default {
-  name: 'App',
-
-  data: () => ({
-    //
-  }),
-};
-</script> -->
 <template>
- 
   <v-app>
     <v-app-bar
       app
-      color="green"
+      color="primary"
       dark
     >
       <div class="d-flex align-center">
@@ -30,14 +13,28 @@ export default {
            src="./assets/logo.jpeg"
           transition="scale-transition"
           width="40"
-        />
-        
+        />  
+
      <h1>ADDRESS BOOK</h1>
 
-      </div>   
+      </div>
+      
+          <router-link to="/"><v-btn 
+       color="primary"
+        dark
+        absolute
+        right 
+        >
+        <v-icon>mdi-account-plus</v-icon>LogOut</v-btn>
+        
+      
+      </router-link> 
+
     </v-app-bar>
+    
   <v-main>
     <router-view/>
+    
    </v-main>
   </v-app>
   
@@ -48,7 +45,7 @@ export default {
   <script>
 export default {
     name: "App",
-               
+           
 };
   </script>
 

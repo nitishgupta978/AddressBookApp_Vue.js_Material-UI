@@ -1,7 +1,7 @@
 <template>
  <body>
       <router-link to="/form"><v-btn 
-       color="purple"
+       color="primary"
         dark
         absolute
         right
