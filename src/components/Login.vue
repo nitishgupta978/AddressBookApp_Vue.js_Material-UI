@@ -20,10 +20,12 @@
            <v-text-field
                   label="FullName*"
                   value=""
+                  v-model="fullName"
                 ></v-text-field>
           <v-text-field
             label="Email"
             value=""
+            v-model="email"
           ></v-text-field>
           <span class="text-caption grey--text text--darken-1">
              This is the email you will use to login to your Address Book account
@@ -36,6 +38,7 @@
           <v-text-field
             label="Password"
             type="password"
+            v-model="password"
           ></v-text-field>
           <v-text-field
             label="Confirm Password"
@@ -108,6 +111,7 @@
               <v-col cols="12">
                 <v-text-field
                   label="Email*"
+                  v-model="email"
                   required
                 ></v-text-field>
               </v-col>
@@ -115,6 +119,7 @@
                 <v-text-field
                   label="Password*"
                   type="password"
+                  v-model="password"
                   required
                 ></v-text-field>
               </v-col>
@@ -131,16 +136,15 @@
           >
             Cancel
           </v-btn>
-           <router-link to="/home">
+           
           <v-btn
             color="blue darken-1"
             text
-            
             @click="userlogin"
           >
           Login
           </v-btn>
-          </router-link>
+          
            </v-card-actions>
           </v-card>
     </v-dialog>
@@ -169,7 +173,7 @@ export default {
       },
     formData() {
       return {
-        fullname: this.fullName,
+        fullName: this.fullName,
         email: this.email,
         password: this.password,
       };
@@ -187,7 +191,9 @@ export default {
      userlogin() {
      loginService.login(this.formData).then((response) => {
         console.log(response.data.data);
-        this.Contacts = response.data.data;
+        this.Contacts = response.data.data
+        this.$router.push({name:"home"})
+        alert("Loging Successful !!")
       });
       this.dialog = false
     },
