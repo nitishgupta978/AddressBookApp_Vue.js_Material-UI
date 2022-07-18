@@ -1,4 +1,7 @@
 <template>
+<div>
+
+
  <body>
       <router-link to="/form"><v-btn 
        color="primary"
@@ -67,15 +70,19 @@
     </template>
   </v-simple-table>
   </body>
+  </div>
 </template>
 
 
 <script>
   import AddressBookService from "../service/AddressBookService";
- 
+   import Header from'../components/Header.vue'
+
 export default {
   name: "Displayhome",
- 
+ component:{
+   Header
+ },
   data() {
     return {
       Contacts: [],
@@ -120,25 +127,28 @@ export default {
         },
         remove(id){
      console.log(id)
-       AddressBookService .deleteContact(id).then((data) => {
-            var answer = window.confirm(" Employee data once deleted cannot be restored!! Do you wish to continue ?",data);
+
+            var answer = window.confirm(" Employee data once deleted cannot be restored!! Do you wish to continue ?");
             if(answer === true){
+              AddressBookService .deleteContact(id).then((data) => {
                 alert("Employee data deleted successfully!!");
                 window.location.reload();
                 this.getContact();
+                })
+          .catch((error) => {
+            alert("Something Went Wrong!");
+          });
             }
             else{
               window.location.reload();
             }
-          })
-          .catch((error) => {
-            alert("Something Went Wrong!");
-          });
+          
         }
   },
    created() {
     this.getEmployee();
   },
+
 }
    
 </script>
@@ -174,7 +184,7 @@ body {
   margin-left: 10px;
 }
 .addressBook-book {
-  color: #3d4e5d;
+  color: #1981dc;
 }
 * {
   box-sizing: border-box;

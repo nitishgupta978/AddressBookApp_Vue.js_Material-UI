@@ -1,4 +1,7 @@
 <template>
+<v-app>
+<Header/>
+
   <v-row justify="center">
     <v-col cols="12" sm="10" md="8" lg="6" width="100" >
       <v-app-bar color="primary" dark>
@@ -146,14 +149,19 @@
       </v-card>
     </v-col>
   </v-row>
+  </v-app>
 </template>
 
 <script>
  import AddressBookService from '../service/AddressBookService'
- 
-export default {
+ import Header from '../components/Header.vue'
+ import Display from'../components/Display.vue'
+ export default {
   name: "form",
-    
+    components: {
+     Header,
+     Display
+},
   data: () => ({
     states: [
       "Andhra Pradesh",

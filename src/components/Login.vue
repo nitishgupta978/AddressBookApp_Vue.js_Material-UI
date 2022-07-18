@@ -125,7 +125,7 @@
               </v-col>
             </v-row>
           </v-container>
-          <small>* required field</small>
+          <small>*required field</small>
         </v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
@@ -192,10 +192,12 @@ export default {
      loginService.login(this.formData).then((response) => {
         console.log(response.data.data);
         this.Contacts = response.data.data
-        this.$router.push({name:"home"})
         alert("Loging Successful !!")
+        this.$router.push({name:"home"})
+        
       });
       this.dialog = false
+      
     },
      }
 }

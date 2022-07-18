@@ -1,4 +1,6 @@
 <template>
+ <v-app>
+<Header/>
   <v-row justify="center">
     <v-col cols="12" sm="10" md="8" lg="6" width="100" >
       <v-app-bar  color="primary" dark>
@@ -138,169 +140,174 @@
       </v-card>
     </v-col>
   </v-row>
+  </v-app>
 </template>
 
 <script>
  import AddressBookService from '../service/AddressBookService'
+  import Header from './Header.vue'
+  import Display from './Display.vue';
+
 export default {
-  name: "EditForm",
-  data: () => ({
-    states: [
-      "Andhra Pradesh",
-      "Arunachal Pradesh",
-      "Asam",
-      "Bihar",
-      "Chhattisgarh",
-      "Goa",
-      "Gujrat",
-      "Haryana",
-      "HP",
-      "Jarkhand",
-      "Karnataka",
-      "kerela",
-      "MP",
-      "Maharastrta",
-      "Manipur",
-      "Meghalay",
-      "Mizoram",
-      "Nagaland",
-      "Odisha",
-      "Panjab",
-      "Rajasthan",
-      "Sikkiam",
-      "TamilNadu",
-      "Tripura",
-      "Telengana",
-      "UK",
-      "UP",
-      "WB",
-    ],
-    cities: [
-      "Ajmer",
-      "Barmer",
-      "Baran",
-      "Bansawada",
-      "Bikaner",
-      "Bhilwara",
-      "Bundi",
-      "Bhopal",
-      "Churu",
-      "Chittorgarh",
-      "Dosa",
-      "Dungarpur",
-      "Dholpur",
-      "Ganganagar",
-      "Jaipur",
-      "Jaisalmer",
-      "Jodhpur",
-      "Jalawar",
-      "Jalor",
-      "Junjunnu",
-      "Hunumangarh",
-      "Kota",
-      "Karoli",
-      "Nagaor",
-      "Pali",
-      "pune",
-      "Patna",
-      "Rajsamand",
-      "Tonk",
-      "Sirohi",
-      "Sikar",
-      "Pratapgarh",
-      "Sawai-Madhopur",
-      "Udaipur",
-      "Bijapuar",
-    ],
-    errorMessages: "",
-    firstname: null,
-    lastname: null,
-    address: null,
-    emailId: null,
-    city: null,
-    phoneNumber: null,
-    state: null,
-    zipcode: null,
-    formHasErrors: false,
-  }),
-
-   computed: {
-    form (){
-      return {
-        firstname: this.firstname,
-        lastname: this.lastname,
-        address: this.address,
-        city: this.city,
-        phoneNumber: this.phoneNumber,
-        state: this.state,
-        zipcode: this.zipcode,
-        emailId: this.emailId
-      }
+    name: "EditForm",
+    data: () => ({
+       components: {
+     Header,
+    Display
+ },
+        states: [
+            "Andhra Pradesh",
+            "Arunachal Pradesh",
+            "Asam",
+            "Bihar",
+            "Chhattisgarh",
+            "Goa",
+            "Gujrat",
+            "Haryana",
+            "HP",
+            "Jarkhand",
+            "Karnataka",
+            "kerela",
+            "MP",
+            "Maharastrta",
+            "Manipur",
+            "Meghalay",
+            "Mizoram",
+            "Nagaland",
+            "Odisha",
+            "Panjab",
+            "Rajasthan",
+            "Sikkiam",
+            "TamilNadu",
+            "Tripura",
+            "Telengana",
+            "UK",
+            "UP",
+            "WB",
+        ],
+        cities: [
+            "Ajmer",
+            "Barmer",
+            "Baran",
+            "Bansawada",
+            "Bikaner",
+            "Bhilwara",
+            "Bundi",
+            "Bhopal",
+            "Churu",
+            "Chittorgarh",
+            "Dosa",
+            "Dungarpur",
+            "Dholpur",
+            "Ganganagar",
+            "Jaipur",
+            "Jaisalmer",
+            "Jodhpur",
+            "Jalawar",
+            "Jalor",
+            "Junjunnu",
+            "Hunumangarh",
+            "Kota",
+            "Karoli",
+            "Nagaor",
+            "Pali",
+            "pune",
+            "Patna",
+            "Rajsamand",
+            "Tonk",
+            "Sirohi",
+            "Sikar",
+            "Pratapgarh",
+            "Sawai-Madhopur",
+            "Udaipur",
+            "Bijapuar",
+        ],
+        errorMessages: "",
+        firstname: null,
+        lastname: null,
+        address: null,
+        emailId: null,
+        city: null,
+        phoneNumber: null,
+        state: null,
+        zipcode: null,
+        formHasErrors: false,
+    }),
+    computed: {
+        form() {
+            return {
+                firstname: this.firstname,
+                lastname: this.lastname,
+                address: this.address,
+                city: this.city,
+                phoneNumber: this.phoneNumber,
+                state: this.state,
+                zipcode: this.zipcode,
+                emailId: this.emailId
+            };
+        },
     },
-   } ,
-
-   watch:{
-    name(){
-      this.errorMessages=''
+    watch: {
+        name() {
+            this.errorMessages = "";
+        },
     },
-   },
-
-   methods :{
-    addressCheck (){
-      this.errorMessages = this.address && !this.firstname && !this.lastname
-      ? `Hey buddy ! I'M Required`:''
-      return true
-    },
-    resetForm () {
-      this.errorMessages =[]
-      this.formHasErrors = false
-
-      object.keys(this.form).forEach(() =>{
-        this.$refs[f].reset()
-      })
-    },
-   getDataById(id){
-             console.log(id)
-            AddressBookService.getContact(id)  .then((response) => {
-              console.log(response.data.data)
+    methods: {
+        addressCheck() {
+            this.errorMessages = this.address && !this.firstname && !this.lastname
+                ? `Hey buddy ! I'M Required` : "";
+            return true;
+        },
+        resetForm() {
+            this.errorMessages = [];
+            this.formHasErrors = false;
+            object.keys(this.form).forEach(() => {
+                this.$refs[f].reset();
+            });
+        },
+        getDataById(id) {
+            console.log(id);
+            AddressBookService.getContact(id).then((response) => {
+                console.log(response.data.data);
                 let obj = response.data.data;
                 this.setData(obj);
             })
-            .catch((err) => {
-               console.log(err);
+                .catch((err) => {
+                console.log(err);
             });
-         },
-      submit (event) {
+        },
+        submit(event) {
             event.preventDefault();
             console.log(this.form);
             const data = this.form;
-           AddressBookService.updateAddressBookData(this.id, data).then((response) => {
-                console.log(response)
-                console.log(response.data.data)
-                this.updateAddressBookData = response.data.data
-                 alert("Contact Added Successfully",response)
+            AddressBookService.updateAddressBookData(this.id, data).then((response) => {
+                console.log(response);
+                console.log(response.data.data);
+                this.updateAddressBookData = response.data.data;
+                alert("Contact Added Successfully", response);
+                this.$router.push({ name: "home" });
             })
-            .catch(error => {
+                .catch(error => {
                 console.log(error);
-                 alert("Contact is not Addedd")
-            })
-      },
-            setData(obj) {
-                this.id = obj.addressId;
-                this.firstname = obj.firstname;
-                this.lastname = obj.lastname;
-                this.city = obj.city;
-                this.address = obj.address;
-                this.state = obj.state;
-                this.phoneNumber = obj.phoneNumber;
-                this.zipcode = obj.zipcode;
-                this.emailId = obj.emailId;
-                console.log(this.form);
+                alert("Contact is not Addedd");
+            });
+        },
+        setData(obj) {
+            this.id = obj.addressId;
+            this.firstname = obj.firstname;
+            this.lastname = obj.lastname;
+            this.city = obj.city;
+            this.address = obj.address;
+            this.state = obj.state;
+            this.phoneNumber = obj.phoneNumber;
+            this.zipcode = obj.zipcode;
+            this.emailId = obj.emailId;
+            console.log(this.form);
+        },
     },
-   },
-     created() {
+    created() {
         this.getDataById(this.$route.params.id);
-    }
-
- }
+    },
+    components: { Header, Display }
+}
 </script>

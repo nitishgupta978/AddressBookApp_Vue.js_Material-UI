@@ -1,25 +1,29 @@
 <template>
-<div>
+<!-- <div> -->
+  <v-app>
+  <Header></Header> 
   <Display/>
-  </div>
+  <!-- </div> -->
+  </v-app>
 </template>
 
 <script>
 import Display from "./Display.vue";
-import Login from'./Login.vue'
+import Header from'./Header.vue';
+
 export default {
   name: "home",
   components: {
-    Display,
-    Login
-  },
+     Header,
+      Display
+},
 };
 </script>
 
 <style>
 body {
   margin: 0;
-  height: 100%;
+  height: 10%;
 }
 .header {
   padding: 10px 0;
@@ -44,11 +48,11 @@ body {
   letter-spacing: 0px;
   text-transform: uppercase;
   opacity: 1;
-  color: #1487e6;
-  margin-left: 10px;
+  color: #137fd8;
+  margin-left: 100px;
 }
 .addressBook-book {
-  color: #3d4e5d;
+  color: #108dfb;
 }
 * {
   box-sizing: border-box;
